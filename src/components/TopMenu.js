@@ -35,6 +35,11 @@ export class TopMenu extends Component {
     this.setState({ anchorEl: null });
   };
 
+  goToAndClose = path => () => {
+    this.props.history.push(path);
+    this.handleClose();
+  };
+
   render() {
     const { classes } = this.props;
     const { anchorEl } = this.state;
@@ -43,7 +48,13 @@ export class TopMenu extends Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
+            <Typography
+              variant="h6"
+              color="inherit"
+              className={classes.grow}
+              onClick={this.goToAndClose("/")}
+              style={{ cursor: "pointer" }}
+            >
               Share Care
             </Typography>
             <IconButton color="inherit" onClick={this.handleClick}>
@@ -58,8 +69,12 @@ export class TopMenu extends Component {
           >
             <MenuItem onClick={this.handleClose}>Profile</MenuItem>
             <MenuItem onClick={this.handleClose}>User View</MenuItem>
+            <MenuItem onClick={this.goToAndClose("/newCommunity")}>
+              New Community
+            </MenuItem>
             <MenuItem onClick={this.handleClose}>Settings</MenuItem>
             <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+            <MenuItem onClick={this.handleClose}>Share Care</MenuItem>
           </Menu>
         </AppBar>
       </div>

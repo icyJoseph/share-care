@@ -14,7 +14,11 @@ function CommunityCard(props) {
   return (
     <Paper
       elevation={10}
-      style={{ margin: "15px 15px", minWidth: "300px", maxWidth: "300px" }}
+      style={{
+        margin: "15px 15px",
+        minWidth: "300px",
+        maxWidth: "300px"
+      }}
     >
       <div style={{ padding: "10px", display: "flex" }}>
         <div style={{ display: "flex", flexDirection: "column", flex: 3 }}>

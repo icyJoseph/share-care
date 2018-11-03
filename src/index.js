@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import "./index.css";
-import App from "./App";
 import { register } from "./serviceWorker";
+import Routes from "./routes";
+import Mock from "./mock";
 
 // colors
 export const dodgerBlue = "#1E90FF";
@@ -20,14 +21,27 @@ const theme = createMuiTheme({
   }
 });
 
-ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <App />
-  </MuiThemeProvider>,
-  document.getElementById("root")
-);
+class Index extends React.Component {
+  state = {
+    communities: Mock
+  };
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+  addCommunity = data => {
+    return this.setState(prev => ({
+      communities: prev.communities.concat(data)
+    }));
+  };
+
+  render() {
+    const { communities } = this.state;
+    return (
+      <MuiThemeProvider theme={theme}>
+        <Routes communities={communities} addCommunity={this.addCommunity} />
+      </MuiThemeProvider>
+    );
+  }
+}
+
+ReactDOM.render(<Index />, document.getElementById("root"));
+
 register();
