@@ -20,7 +20,6 @@ function CommunityCard(props) {
         maxWidth: "300px",
         cursor: "pointer"
       }}
-      onClick={props.navigateTo}
     >
       <div style={{ padding: "10px", display: "flex" }}>
         <div style={{ display: "flex", flexDirection: "column", flex: 3 }}>

@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Typography from "@material-ui/core/Typography";
-import Slider from "./Slider";
+import Slider from "../components/Slider";
 
 const NewCommunityContainer = styled.div`
   display: flex;

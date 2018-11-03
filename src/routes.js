@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import TopMenu from "./components/TopMenu";
-import NewCommunity from "./components/NewCommunity";
-import Detail from "./components/Detail";
+import Dashboard from "./containers/Dashboard";
+import TopMenu from "./containers/TopMenu";
+import NewCommunity from "./containers/NewCommunity";
 
 export const Routes = props => (
   <BrowserRouter>
@@ -17,11 +16,6 @@ export const Routes = props => (
           path="/"
           exact
           render={routerProps => <Dashboard {...routerProps} {...props} />}
-        />
-        <Route
-          path="/community/:id"
-          exact
-          render={routerProps => <Detail {...routerProps} {...props} />}
         />
         <Route
           path="/newCommunity"
