@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import TopMenu from "./components/TopMenu";
 import NewCommunity from "./components/NewCommunity";
+import Detail from "./components/Detail";
 
 export const Routes = props => (
   <BrowserRouter>
@@ -16,6 +17,11 @@ export const Routes = props => (
           path="/"
           exact
           render={routerProps => <Dashboard {...routerProps} {...props} />}
+        />
+        <Route
+          path="/community/:id"
+          exact
+          render={routerProps => <Detail {...routerProps} {...props} />}
         />
         <Route
           path="/newCommunity"
