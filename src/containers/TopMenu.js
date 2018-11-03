@@ -67,6 +67,7 @@ export class TopMenu extends Component {
             open={Boolean(anchorEl)}
             onClose={this.handleClose}
           >
+            {/* ugly code! */}
             <MenuItem onClick={this.handleClose}>Profile</MenuItem>
             <MenuItem onClick={this.handleClose}>User View</MenuItem>
             <MenuItem onClick={this.goToAndClose("/newCommunity")}>
@@ -74,7 +75,7 @@ export class TopMenu extends Component {
             </MenuItem>
             <MenuItem onClick={this.handleClose}>Settings</MenuItem>
             <MenuItem onClick={this.handleClose}>Logout</MenuItem>
-            <MenuItem onClick={this.handleClose}>Share Care</MenuItem>
+            <MenuItem onClick={this.goToAndClose("/")}>Share Care</MenuItem>
           </Menu>
         </AppBar>
       </div>
