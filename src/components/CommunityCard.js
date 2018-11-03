@@ -7,6 +7,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
+import People from "@material-ui/icons/People";
 import Typography from "@material-ui/core/Typography";
 
 const styles = {
@@ -31,7 +32,6 @@ const styles = {
 
 function CommunityCard(props) {
   const { classes } = props;
-  console.log(props);
   return (
     <Paper
       className={classes.root}
@@ -43,9 +43,21 @@ function CommunityCard(props) {
           <Typography variant="h5" component="h2">
             {props.name}
           </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            {props.members} members, {props.newMembers} new
-          </Typography>
+          <Button variant="contained" color="primary">
+            {props.members} members
+            <People style={{ marginLeft: "5px" }} />
+            <div
+              style={{
+                backgroundColor: "#e10050",
+                borderRadius: "50%",
+                width: "20px",
+                height: "20px",
+                marginTop: "-15px"
+              }}
+            >
+              +{props.newMembers}
+            </div>
+          </Button>
           <div style={{ flex: 1, display: "flex", flexWrap: "wrap" }}>
             {props.keywords.map(keyword => (
               <Chip key={keyword} label={keyword} className={classes.chip} />
