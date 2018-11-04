@@ -41,7 +41,7 @@ export function Spinner({
         <circle
           className="SpinnerPath"
           fill="none"
-          stroke="currentColor"
+          stroke="dodgerblue"
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           cx={pathSize}
