@@ -28,7 +28,7 @@ class Index extends React.Component {
 
   addCommunity = data => {
     return this.setState(prev => ({
-      communities: prev.communities.concat(data)
+      communities: [data].concat(prev.communities)
     }));
   };
 
