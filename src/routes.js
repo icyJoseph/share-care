@@ -1,26 +1,64 @@
-import React, { Fragment } from "react";
+import React, { Fragment, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Dashboard from "./containers/Dashboard";
-import TopMenu from "./containers/TopMenu";
-import NewCommunity from "./containers/NewCommunity";
+import Spinner from "./components/Spinner";
+
+const LazyDashboard = lazy(() =>
+  import(/* webpackChunkName: "dashboard" */ "./containers/Dashboard")
+);
+
+const LazyTopMenu = lazy(() =>
+  import(/* webpackChunkName: "topbar" */ "./containers/TopMenu")
+);
+
+const LazyNewCommunity = lazy(() =>
+  import(/* webpackChunkName: "newcommunity" */ "./containers/NewCommunity")
+);
+
+function SuspenseDashboard(props) {
+  return (
+    <Suspense fallback={<Spinner size="medium" />}>
+      <LazyDashboard {...props} />
+    </Suspense>
+  );
+}
+
+function SuspenseTopBar(props) {
+  return (
+    <Suspense fallback={<Spinner size="medium" />}>
+      <LazyTopMenu {...props} />
+    </Suspense>
+  );
+}
+
+function SuspenseNewCommunity(props) {
+  return (
+    <Suspense fallback={<Spinner size="medium" />}>
+      <LazyNewCommunity {...props} />
+    </Suspense>
+  );
+}
 
 export const Routes = props => (
   <BrowserRouter>
     <Fragment>
       <Route
         path="/"
-        render={routerProps => <TopMenu {...routerProps} {...props} />}
+        render={routerProps => <SuspenseTopBar {...routerProps} {...props} />}
       />
       <Switch>
         <Route
           path="/"
           exact
-          render={routerProps => <Dashboard {...routerProps} {...props} />}
+          render={routerProps => (
+            <SuspenseDashboard {...routerProps} {...props} />
+          )}
         />
         <Route
           path="/newCommunity"
           exact
-          render={routerProps => <NewCommunity {...routerProps} {...props} />}
+          render={routerProps => (
+            <SuspenseNewCommunity {...routerProps} {...props} />
+          )}
         />
       </Switch>
     </Fragment>
